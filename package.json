@@ -1,0 +1,31 @@
+{
+  "name": "eth-jwt",
+  "version": "0.0.1",
+  "description": "Utility to create a self-signed JWT token from an ETH private key",
+  "main": "./index.js",
+  "bin": {
+    "eth-token": "./bin.js"
+  },
+  "exports": {
+    ".": {
+      "browser": {
+        "default": "./bundle.js"
+      },
+      "default": "./index.js"
+    },
+    "./token": {
+      "default": "./token.js"
+    }
+  },
+  "scripts": {
+    "bundle": "npx esbuild --format=esm index.ts --bundle --minify --outfile=bundle.js",
+    "build": "npx tsc --module es6 --moduleResolution node index.ts"
+  },
+  "type": "module",
+  "author": "Carson Farmer <carson@textile.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@stablelib/base64": "^1.0.1",
+    "ethers": "^5.5.3"
+  }
+}
